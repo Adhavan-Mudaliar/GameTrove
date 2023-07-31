@@ -13,7 +13,7 @@ interface FetchGenresResponse{
 }
 
 const useGenres = () => {
-    const [genres, setGames] = useState<Genres[]>([]);
+    const [genres, setGenres] = useState<Genres[]>([]);
     const [error, setError] = useState("");
     const[isLoading,setLoading]= useState(false);
   
@@ -24,7 +24,7 @@ const useGenres = () => {
         .get<FetchGenresResponse>("/genres", {signal:controller.signal})
         .then((res) => {
           setLoading(false);
-          setGames(res.data.results)})
+          setGenres(res.data.results)})
         .catch((err) => {
             if (err instanceof CanceledError) return;
             setError(err.message)
